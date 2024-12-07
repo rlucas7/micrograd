@@ -73,14 +73,19 @@ def f(a, b, c):
   return -a**3 + sin(3*b) - 1.0/c + b**2.5 - a**0.5
 
 def gradf(a, b, c):
-    # fill your grad in here...
-    pass
+    dfda = -3*a**2 - 0.5*a**-0.5
+    dfdb = 3 * cos(3*b) + 2.5 * b ** 1.5
+    dfdc = 1 * c ** -2
+  return [dfda, dfdb, dfdc] # todo, return [df/da, df/db, df/dc]
+
+    
 
 def test_exercise_1():
     # expected answer is the list of 
     ans = [-12.353553390593273, 10.25699027111255, 0.0625]
     yours = gradf(2, 3, 4)
     for dim in range(3):
-    ok = 'OK' if abs(yours[dim] - ans[dim]) < 1e-5 else 'WRONG!'
-    print(f"{ok} for dim {dim}: expected {ans[dim]}, yours returns {yours[dim]}")
-    assert ok == "OK"
+        ok = 'OK' if abs(yours[dim] - ans[dim]) < 1e-5 else 'WRONG!'
+        assert ok == "OK"
+        print(f"{ok} for dim {dim}: expected {ans[dim]}, yours returns {yours[dim]}")
+        
