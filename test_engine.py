@@ -65,3 +65,22 @@ def test_more_ops():
     # backward pass went well
     assert abs(amg.grad - apt.grad.item()) < tol
     assert abs(bmg.grad - bpt.grad.item()) < tol
+
+# here is a mathematical expression that takes 3 inputs and produces one output
+from math import sin, cos
+
+def f(a, b, c):
+  return -a**3 + sin(3*b) - 1.0/c + b**2.5 - a**0.5
+
+def gradf(a, b, c):
+    # fill your grad in here...
+    pass
+
+def test_exercise_1():
+    # expected answer is the list of 
+    ans = [-12.353553390593273, 10.25699027111255, 0.0625]
+    yours = gradf(2, 3, 4)
+    for dim in range(3):
+    ok = 'OK' if abs(yours[dim] - ans[dim]) < 1e-5 else 'WRONG!'
+    print(f"{ok} for dim {dim}: expected {ans[dim]}, yours returns {yours[dim]}")
+    assert ok == "OK"
